@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import {Link} from "@remix-run/react";
 import Navbar from "~/components/navbar";
+import ItemCard from "~/components/item-card";
 
 export const meta: MetaFunction = () => {
   return [

@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async ({ params }) => {
             name: "Organic Carrots",
             description: "Sweet and crunchy carrots, perfect for snacking or cooking",
             price: 2.99,
-            image: "http://localhost:5173/logo-dark.png?height=200&width=300",
+            image: "http://localhost:5173/tomato-image.jpg?height=200&width=300",
         },
         {
             id: 2,
