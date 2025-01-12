@@ -48,7 +48,7 @@ export default function Contact() {
                     {/* Contact Information */}
                     <div className="bg-white rounded-xl shadow-lg p-8">
                         <div className="space-y-8">
-                            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
+                            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Infos</h2>
 
                             <div className="flex items-start space-x-4">
                                 <Phone className="w-6 h-6 text-green-600 mt-1" />
@@ -162,13 +162,12 @@ export default function Contact() {
                     <div className="bg-white rounded-xl shadow-lg p-4 h-[400px] overflow-hidden">
                         <iframe
                             title="Store Location"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645454832937!5m2!1sen!2s"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13441.727175531373!2d16.212879926700257!3d47.620574634816716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476cf87b5b0e7ff5%3A0x3a8b9ba2ae60e0fd!2sBromberg%2C%20Austria!5e0!3m2!1sen!2s!4v1645454832937!5m2!1sen!2s"
                             width="100%"
                             height="100%"
-                            style={{border: 0}}
                             allowFullScreen
-                            loading="lazy"
-                        />
+                            loading="lazy">
+                        </iframe>
                     </div>
                 </div>
             </div>

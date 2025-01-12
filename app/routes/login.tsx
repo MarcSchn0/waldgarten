@@ -1,8 +1,9 @@
-import { Form, useActionData, Link } from "@remix-run/react";
-import { json, ActionFunctionArgs } from "@remix-run/node";
+import { useActionData } from "@remix-run/react";
+import { ActionFunctionArgs } from "@remix-run/node";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
 import {Button} from "~/components/ui/button";
+import {loginUser} from "~/utils/auth.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
     const formData = await request.formData();
@@ -11,11 +12,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
     // Replace with actual authentication logic
     if (!email || !password) {
-        return json({ message: "Bitte geben Sie Ihre Anmeldedaten ein.", success: false });
+        return Response.json({ message: "Bitte geben Sie Ihre Anmeldedaten ein.", success: false });
+    }
+    let user;
+    if(typeof email !== "undefined" && typeof email === "string" && typeof password !== "undefined" && typeof password === "string") {
+        user = await loginUser(email, password);
     }
 
+    console.log(user);
     // Simulate successful login
-    return json({ message: "Anmeldung erfolgreich!", success: true });
+    return Response.json({ message: "successful", success: true });
 };
 
 export default function Login() {
@@ -36,7 +42,7 @@ export default function Login() {
                             name="email"
                             type="email"
                             placeholder="Geben Sie Ihre E-Mail ein"
-                            required
+
                             className="mt-1 w-full border-gray-300 focus:ring-green-500 focus:border-green-500"
                         />
                     </div>
@@ -50,7 +56,7 @@ export default function Login() {
                             name="password"
                             type="password"
                             placeholder="Geben Sie Ihr Passwort ein"
-                            required
+
                             className="mt-1 w-full border-gray-300 focus:ring-green-500 focus:border-green-500"
                         />
                     </div>
