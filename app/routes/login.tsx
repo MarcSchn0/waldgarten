@@ -1,27 +1,46 @@
 import { useActionData } from "@remix-run/react";
-import { ActionFunctionArgs } from "@remix-run/node";
+import {ActionFunctionArgs, json, LoaderFunction, LoaderFunctionArgs, redirect} from "@remix-run/node";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
 import {Button} from "~/components/ui/button";
-import {loginUser} from "~/utils/auth.server";
+import {getUser, login} from "~/utils/auth.server";
+
+export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs) => {
+    return (await getUser(request)) ? redirect('/') : null
+}
+
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-    const formData = await request.formData();
-    const email = formData.get("email");
-    const password = formData.get("password");
+    try {
+        const formData = await request.formData();
+        const email = formData.get("email");
+        const password = formData.get("password");
 
-    // Replace with actual authentication logic
-    if (!email || !password) {
-        return Response.json({ message: "Bitte geben Sie Ihre Anmeldedaten ein.", success: false });
-    }
-    let user;
-    if(typeof email !== "undefined" && typeof email === "string" && typeof password !== "undefined" && typeof password === "string") {
-        user = await loginUser(email, password);
-    }
+        // Validate input
+        if (!email || !password) {
+            return json(
+                { message: "Bitte geben Sie Ihre Anmeldedaten ein.", success: false },
+                { status: 400 }
+            );
+        }
 
-    console.log(user);
-    // Simulate successful login
-    return Response.json({ message: "successful", success: true });
+        if (typeof email !== "string" || typeof password !== "string") {
+            return json(
+                { message: "Ungültige Eingaben. Bitte versuchen Sie es erneut.", success: false },
+                { status: 400 }
+            );
+        }
+
+        // Call loginUser to authenticate the user
+        return await login({email, password});
+
+    } catch (error) {
+        console.error("Login action error:", error);
+        return json(
+            { message: "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.", success: false },
+            { status: 500 }
+        );
+    }
 };
 
 export default function Login() {

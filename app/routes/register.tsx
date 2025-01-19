@@ -5,12 +5,14 @@ import {Input} from "~/components/ui/input";
 import {Button} from "~/components/ui/button";
 import {validatePassword} from "~/utils/validation.server";
 import {Info} from "lucide-react";
-import {registerUser} from "~/utils/auth.server";
+import {register} from "~/utils/auth.server";
+
 
 export async function action({request}: ActionFunctionArgs) {
     const formData = await request.formData();
     const firstName = formData.get("firstName");
     const lastName = formData.get("lastName");
+    const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
 
@@ -18,6 +20,7 @@ export async function action({request}: ActionFunctionArgs) {
 
     if (!firstName) errors.firstName = "Bitte geben Sie Ihren Vornamen ein.";
     if (!lastName) errors.lastName = "Bitte geben Sie Ihren Nachnamen ein.";
+    if (!username) errors.username = "Bitte geben Sie Ihren Username ein.";
     if (!email) errors.email = "Bitte geben Sie Ihre E-Mail-Adresse ein.";
     if (!password) {
         errors.password = "Bitte geben Sie Ihr Passwort ein.";
@@ -33,7 +36,7 @@ export async function action({request}: ActionFunctionArgs) {
         };
     }
     if(typeof firstName === "string" && typeof lastName === "string" && typeof email === "string" && typeof password === "string") {
-        return await registerUser({firstName,lastName,email,password});
+        return await register({firstName,lastName,username,email,password});
     }
 
 
@@ -50,12 +53,32 @@ export default function Register() {
 
                 <form method="post" className="space-y-4">
                     <div>
+                        <Label htmlFor="username" className="block text-sm font-medium text-gray-700">
+                            Username
+                        </Label>
+                        <Input
+                            id="username"
+                            name="username"
+                            autoComplete="username"
+                            type="text"
+                            placeholder="Geben Sie Ihren Username ein"
+                            defaultValue={actionData?.values?.username || ""}
+                            className={`mt-1 w-full border-gray-300 focus:ring-green-500 focus:border-green-500 ${
+                                actionData?.errors?.username ? "border-red-500" : ""
+                            }`}
+                        />
+                        {actionData?.errors?.firstName && (
+                            <p className="text-red-500 text-sm mt-1">{actionData.errors.username}</p>
+                        )}
+                    </div>
+                    <div>
                         <Label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
                             Vorname
                         </Label>
                         <Input
                             id="firstName"
                             name="firstName"
+                            autoComplete="given-name"
                             type="text"
                             placeholder="Geben Sie Ihren Vornamen ein"
                             defaultValue={actionData?.values?.firstName || ""}
@@ -75,6 +98,7 @@ export default function Register() {
                         <Input
                             id="lastName"
                             name="lastName"
+                            autoComplete="family-name"
                             type="text"
                             placeholder="Geben Sie Ihren Nachnamen ein"
                             defaultValue={actionData?.values?.lastName || ""}
@@ -94,6 +118,7 @@ export default function Register() {
                         <Input
                             id="email"
                             name="email"
+                            autoComplete="email"
                             type="email"
                             placeholder="Geben Sie Ihre E-Mail ein"
                             defaultValue={actionData?.values?.email || ""}
@@ -124,6 +149,7 @@ export default function Register() {
                         <Input
                             id="password"
                             name="password"
+                            autoComplete="new-password"
                             type="password"
                             placeholder="Geben Sie Ihr Passwort ein"
                             className={`mt-1 w-full border-gray-300 focus:ring-green-500 focus:border-green-500 ${
