@@ -1,0 +1,12 @@
+https://ec2-52-59-193-151.eu-central-1.compute.amazonaws.com/ {
+    # Reverse proxy to Remix server
+    reverse_proxy remix-app:3000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    # Enable compression
+    encode gzip
+}

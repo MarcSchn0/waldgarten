@@ -11,9 +11,9 @@ export default function Footer () {
                     <div className="space-y-4">
                         <h3 className="text-white font-semibold text-lg">Unternehmen</h3>
                         <ul className="space-y-2">
-                            <li><a href="about-us" className="hover:text-green-200 transition-colors">Über uns</a></li>
-                            <li><a href="contact" className="hover:text-green-200 transition-colors">Kontakt</a></li>
-                            <li><a href="blog" className="hover:text-green-200 transition-colors">Blog</a></li>
+                            <li><a href="/about-us" className="hover:text-green-200 transition-colors">Über uns</a></li>
+                            <li><a href="/contact" className="hover:text-green-200 transition-colors">Kontakt</a></li>
+                            <li><a href="/blog" className="hover:text-green-200 transition-colors">Blog</a></li>
                         </ul>
                     </div>
 

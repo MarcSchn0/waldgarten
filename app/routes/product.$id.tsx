@@ -1,60 +1,14 @@
-import { json, LoaderFunction } from "@remix-run/node";
-import { useLoaderData, Link } from "@remix-run/react";
-import {Item} from "~/types/interfaces";
-
-
+import React from 'react';
+import { Link, useLoaderData } from '@remix-run/react';
+import {json, LoaderFunction, redirect} from '@remix-run/node';
+import { Star, Truck, PackageCheck, ShieldCheck, Heart } from 'lucide-react';
+import { Item } from '~/types/interfaces';
+import {prisma} from "~/db.server";
 
 export const loader: LoaderFunction = async ({ params }) => {
-    // In a real application, you would fetch this data from a database or API
-    const items: Item[] = [
-        {
-            id: 1,
-            name: "Organic Carrots",
-            description: "Sweet and crunchy carrots, perfect for snacking or cooking",
-            price: 2.99,
-            image: "http://localhost:5173/tomato-image.jpg?height=200&width=300",
-        },
-        {
-            id: 2,
-            name: "Fresh Spinach",
-            description: "Nutrient-packed spinach leaves, great for salads and smoothies",
-            price: 3.49,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 3,
-            name: "Ripe Tomatoes",
-            description: "Juicy, flavorful tomatoes, ideal for sandwiches and sauces",
-            price: 4.99,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 4,
-            name: "Organic Broccoli",
-            description: "Crisp and nutritious broccoli florets, perfect for steaming or roasting",
-            price: 3.99,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 5,
-            name: "Fresh Lettuce",
-            description: "Crisp and refreshing lettuce leaves for salads and sandwiches",
-            price: 2.49,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 6,
-            name: "Organic Bell Peppers",
-            description: "Colorful and crunchy bell peppers, great for snacking or cooking",
-            price: 3.99,
-            image: "?height=200&width=300",
-        },
-    ];
-
-    const item = items.find(item => item.id === parseInt(params.id || ""));
-
+    const item = await prisma.item.findUnique({ where: { id: parseInt(params.id as string) } });
     if (!item) {
-        throw new Response("Not Found", { status: 404 });
+        return redirect("/");
     }
 
     return json({ item });
@@ -62,20 +16,114 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function ProductDetail() {
     const { item } = useLoaderData<{ item: Item }>();
+    const [isWishlist, setIsWishlist] = React.useState(false);
 
     return (
-        <div className="min-h-screen flex flex-col">
-            <main className="container mx-auto px-4 py-8">
-                <Link to="/shop" className="text-green-600 hover:underline mb-4 inline-block">&larr; Back to Shop</Link>
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-64 object-cover" />
-                    <div className="p-6">
-                        <h1 className="text-3xl font-bold mb-4">{item.name}</h1>
-                        <p className="text-gray-600 mb-4">{item.description}</p>
-                        <p className="text-2xl text-green-600 font-bold mb-4">${item.price.toFixed(2)}</p>
-                        <button className="bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition duration-300">
-                            Add to Cart
-                        </button>
+        <div className="min-h-screen bg-gray-50">
+            <main className="container mx-auto px-4 py-12">
+                <Link to="/shop" className="text-green-600 hover:text-green-700 mb-8 inline-flex items-center gap-2 font-medium">
+                    <span className="text-lg">←</span> Zurück zum Shop
+                </Link>
+
+                <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Image Section */}
+                        <div className="relative">
+                            <img
+                                src={item.imageUrl}
+                                alt={item.name}
+                                className="w-full h-[500px] object-cover"
+                            />
+                            <button
+                                onClick={() => setIsWishlist(!isWishlist)}
+                                className="absolute top-4 right-4 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+                            >
+                                <Heart
+                                    className={`w-6 h-6 ${isWishlist ? 'fill-red-500 text-red-500' : 'text-gray-400'}`}
+                                />
+                            </button>
+                        </div>
+
+                        {/* Product Info Section */}
+                        <div className="p-8">
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="flex">
+                                    {[1, 2, 3, 4, 5].map((star) => (
+                                        <Star
+                                            key={star}
+                                            className="w-5 h-5 text-yellow-400 fill-yellow-400"
+                                        />
+                                    ))}
+                                </div>
+                                <span className="text-gray-600">(4.8/5)</span>
+                            </div>
+
+                            <h1 className="text-4xl font-bold mb-4">{item.name}</h1>
+                            <p className="text-gray-600 text-lg mb-6">{item.description}</p>
+
+                            <div className="flex items-baseline gap-4 mb-8">
+                                <span className="text-3xl font-bold text-green-600">
+                                    {item.price.toFixed(2)}€
+                                </span>
+                                <span className="text-gray-500 line-through">
+                                   {(item.price * 1.2).toFixed(2)} €
+                                </span>
+                                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                                    20% Rabatt
+                                </span>
+                            </div>
+
+                            {/* Add to Cart Section */}
+                            <div className="space-y-4 mb-8">
+                                <div className="flex items-center gap-4">
+                                    <div className="flex items-center border rounded-lg">
+                                        <button className="px-4 py-2 text-xl hover:bg-gray-50">−</button>
+                                        <span className="px-4 py-2 border-x">1</span>
+                                        <button className="px-4 py-2 text-xl hover:bg-gray-50">+</button>
+                                    </div>
+                                    <button className="flex-1 bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors">
+                                        In den Warenkorb
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Features */}
+                            <div className="space-y-4 border-t pt-8">
+                                <div className="flex items-center gap-3">
+                                    <Truck className="w-5 h-5 text-green-600" />
+                                    <span className="text-gray-600">Kostenloser Versand ab €50</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <PackageCheck className="w-5 h-5 text-green-600" />
+                                    <span className="text-gray-600">Frische Garantie</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <ShieldCheck className="w-5 h-5 text-green-600" />
+                                    <span className="text-gray-600">100% Bio-Qualität</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Additional Info */}
+                <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
+                    <h2 className="text-2xl font-bold mb-6">Produktdetails</h2>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 className="font-semibold mb-4">Herkunft</h3>
+                            <p className="text-gray-600">
+                                Unser {item.name} wird von ausgewählten Bio-Bauern in der Region angebaut.
+                                Wir garantieren kurze Transportwege und maximale Frische.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold mb-4">Lagerung</h3>
+                            <p className="text-gray-600">
+                                Für optimale Haltbarkeit empfehlen wir die Lagerung bei 4-8°C im Gemüsefach
+                                Ihres Kühlschranks.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </main>

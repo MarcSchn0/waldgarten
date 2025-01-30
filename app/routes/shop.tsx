@@ -4,8 +4,10 @@ import ItemCard from "~/components/item-card";
 import {Search, SlidersHorizontal} from "lucide-react";
 import {useState} from "react";
 import fs from "fs";
+import {prisma} from "~/db.server";
+import ItemCard2 from "~/components/item-card-2";
 
-interface Item { id: number; name: string; description: string; price: number; image: string; }
+interface Item { id: number; name: string; description: string; price: number; imageUrl: string; }
 
 export const loader: LoaderFunction = async ({ request }) => {
     const url = new URL(request.url);
@@ -13,51 +15,9 @@ export const loader: LoaderFunction = async ({ request }) => {
     const minPrice = Number(url.searchParams.get("minPrice")) || 0;
     const maxPrice = Number(url.searchParams.get("maxPrice")) || 1000;
 
-    // In a real application, you would fetch this data from a database or API
-    let items: Item[] = [
-        {
-            id: 1,
-            name: "Organische Tomaten",
-            description: "Sweet and crunchy tomatos, perfect for snacking or cooking",
-            price: 2.99,
-            image: "http://localhost:5173/tomato-image.jpg?height=200&width=300",
-        },
-        {
-            id: 2,
-            name: "Fresh Spinach",
-            description: "Nutrient-packed spinach leaves, great for salads and smoothies",
-            price: 3.49,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 3,
-            name: "Ripe Tomatoes",
-            description: "Juicy, flavorful tomatoes, ideal for sandwiches and sauces",
-            price: 4.99,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 4,
-            name: "Organic Broccoli",
-            description: "Crisp and nutritious broccoli florets, perfect for steaming or roasting",
-            price: 3.99,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 5,
-            name: "Fresh Lettuce",
-            description: "Crisp and refreshing lettuce leaves for salads and sandwiches",
-            price: 2.49,
-            image: "?height=200&width=300",
-        },
-        {
-            id: 6,
-            name: "Organic Bell Peppers",
-            description: "Colorful and crunchy bell peppers, great for snacking or cooking",
-            price: 3.99,
-            image: "?height=200&width=300",
-        },
-    ];
+
+    let items = await prisma.item.findMany();
+
 
     // Apply filters
     items = items.filter((item) => {
@@ -94,12 +54,12 @@ export default function Shop() {
                 {/* Filters Sidebar */}
                 <aside className={`w-full md:w-80 lg:w-96 ${isFilterOpen ? 'block' : 'hidden'} md:block`}>
                     <div className="bg-white p-6 rounded-lg shadow-md">
-                        <h2 className="text-xl font-semibold mb-6 text-green-800">Filters</h2>
+                        <h2 className="text-xl font-semibold mb-6 text-green-800">Filter</h2>
                         <Form method="get" className="space-y-6">
                             {/* Search */}
                             <div>
                                 <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Search Products
+                                    Suche Produkte
                                 </label>
                                 <div className="relative">
                                     <input
@@ -116,7 +76,7 @@ export default function Shop() {
 
                             {/* Price Range */}
                             <div>
-                                <h3 className="text-sm font-medium text-gray-700 mb-2">Price Range</h3>
+                                <h3 className="text-sm font-medium text-gray-700 mb-2">Preis</h3>
                                 <div className="flex gap-2 items-center">
                                     <input
                                         type="number"
@@ -150,7 +110,7 @@ export default function Shop() {
 
                 {/* Products Grid */}
                 <div className="flex-1">
-                    <h1 className="text-3xl font-bold mb-8 text-green-800">Our Products</h1>
+                    <h1 className="text-3xl font-bold mb-8 text-green-800">Unsere Produkte</h1>
                     {items.length === 0 ? (
                         <div className="text-center py-8">
                             <p className="text-gray-600">No products found matching your criteria.</p>
@@ -158,7 +118,7 @@ export default function Shop() {
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {items.map((item) => (
-                                <ItemCard key={item.id} item={item} />
+                                <ItemCard2 key={item.id} item={item}/>
                             ))}
                         </div>
                     )}
