@@ -1,7 +1,7 @@
 import {json, LoaderFunction, MetaFunction, redirect} from "@remix-run/node";
 import {Link, useLoaderData} from "@remix-run/react";
 import {prisma} from "~/db.server";
-import {Item} from "~/types/interfaces";
+import {Product} from "~/types/interfaces";
 import ItemCard from "~/components/item-card";
 import ItemCard2 from "~/components/item-card-2";
 
@@ -17,16 +17,18 @@ export const loader: LoaderFunction = async ({ params }) => {
   const featuredProducts = await prisma.item.findMany({
     where: {
       id: {
-        lte: 3,
+        lte: 4,
       },
     },
   });
 
-  return json({featuredProducts});
+  const hostUrl = process.env.PUBLIC_HOST_URL;
+
+  return json({featuredProducts, hostUrl});
 }
 
 export default function Index() {
-  const { featuredProducts } = useLoaderData<typeof loader>();
+  const { featuredProducts, hostUrl } = useLoaderData<typeof loader>();
 
   return (
         <div className="min-h-screen flex flex-col">
@@ -45,8 +47,8 @@ export default function Index() {
               <div className="container mx-auto">
                 <h2 className="text-3xl font-bold mb-8 text-center">Meistgekaufte Produkte</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {featuredProducts.map((item: Item) => (
-                      <ItemCard key={item.id} item={item}/>
+                  {featuredProducts.map((item: Product) => (
+                      <ItemCard key={item.id} item={item} url={hostUrl} />
                   ))}
                 </div>
               </div>

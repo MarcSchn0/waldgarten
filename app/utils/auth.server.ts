@@ -110,7 +110,7 @@ export async function getUser(request: Request) {
     try {
         return await prisma.user.findUnique({
             where: {id: userId},
-            select: {id: true, email: true, firstName: true, lastName: true,username: true},
+            select: {id: true, email: true, firstName: true, lastName: true,username: true, role: true},
         })
     } catch {
         throw logout(request)

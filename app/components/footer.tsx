@@ -21,9 +21,9 @@ export default function Footer () {
                     <div className="space-y-4">
                         <h3 className="text-white font-semibold text-lg">Rechtliches</h3>
                         <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-green-200 transition-colors">Datenschutzrichtlinien</a></li>
-                            <li><a href="#" className="hover:text-green-200 transition-colors">Nutzungsbedingungen</a></li>
-                            <li><a href="#" className="hover:text-green-200 transition-colors">Cookie-Richtlinien</a></li>
+                            <li><a href="/impressum" className="hover:text-green-200 transition-colors">Impressum</a></li>
+                            <li><a href="/nutzungsbedingungen" className="hover:text-green-200 transition-colors">Nutzungsbedingungen</a></li>
+                            <li><a href="/cookies" className="hover:text-green-200 transition-colors">Cookie-Richtlinien</a></li>
                         </ul>
                     </div>
 

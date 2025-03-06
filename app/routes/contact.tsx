@@ -2,6 +2,9 @@ import { json, type ActionFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import {Button} from "~/components/ui/button";
+import {Textarea} from "~/components/ui/textarea";
+import {Label} from "~/components/ui/label";
+import {Input} from "~/components/ui/input";
 
 interface ActionData {
     errors?: {
@@ -99,14 +102,13 @@ export default function Contact() {
                             )}
 
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                                <Label htmlFor="name" className="block text-sm font-medium text-gray-700">
                                     Name
-                                </label>
-                                <input
+                                </Label>
+                                <Input
                                     type="text"
                                     name="name"
                                     id="name"
-                                    className="mt-1 h-10 block w-full rounded-md border border-gray-400 bg-gray-50 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required
                                 />
                                 {actionData?.errors?.name && (
@@ -115,14 +117,13 @@ export default function Contact() {
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                <Label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                     Email
-                                </label>
-                                <input
+                                </Label>
+                                <Input
                                     type="email"
                                     name="email"
                                     id="email"
-                                    className="mt-1 h-10 block w-full rounded-md border border-gray-400 bg-gray-50 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required
                                 />
                                 {actionData?.errors?.email && (
@@ -131,14 +132,13 @@ export default function Contact() {
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                                <Label htmlFor="message" className="block text-sm font-medium text-gray-700">
                                     Nachricht
-                                </label>
-                                <textarea
+                                </Label>
+                                <Textarea
                                     name="message"
                                     id="message"
                                     rows={4}
-                                    className="mt-1 block w-full rounded-md border border-gray-400 bg-gray-50 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                                     required
                                 />
                                 {actionData?.errors?.message && (

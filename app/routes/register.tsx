@@ -35,7 +35,7 @@ export async function action({request}: ActionFunctionArgs) {
             values: {firstName, lastName, email, password},
         };
     }
-    if(typeof firstName === "string" && typeof lastName === "string" && typeof email === "string" && typeof password === "string") {
+    if(typeof firstName === "string" && typeof lastName === "string" && typeof email === "string" && typeof password === "string" && typeof username === "string") {
         return await register({firstName,lastName,username,email,password});
     }
 
@@ -54,12 +54,12 @@ export default function Register() {
                 <form method="post" className="space-y-4">
                     <div>
                         <Label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                            Username
+                            Nutzername
                         </Label>
                         <Input
                             id="username"
                             name="username"
-                            autoComplete="username"
+                            autoComplete="off"
                             type="text"
                             placeholder="Geben Sie Ihren Username ein"
                             defaultValue={actionData?.values?.username || ""}
