@@ -8,7 +8,7 @@ export default function About() {
             <section className="bg-green-50 py-20">
                 <div className="container mx-auto px-4"><h1 className="text-4xl font-bold text-center mb-6">Über
                     Uns</h1> <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto"> Willkommen im
-                    Waldgartenbio Shop in Bromberg! Wir sind ein junges Unternehmen, das mit Herz und Leidenschaft
+                    Waldgarten Shop in Bromberg! Wir sind ein junges Unternehmen, das mit Herz und Leidenschaft
                     frisches, heimisches Gemüse und weitere natürliche Produkte anbaut und verkauft. Unser Fokus liegt
                     auf nachhaltiger Landwirtschaft und regionaler Qualität, direkt aus der Natur. </p></div>
             </section>

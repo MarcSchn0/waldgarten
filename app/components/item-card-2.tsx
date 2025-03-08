@@ -37,7 +37,7 @@ export default function ItemCard2({ item, url }: ItemCardProps) {
         >
             <div className="relative h-64 overflow-hidden rounded-t-xl">
                 <img
-                    src={`${url}/imgs/${item.imageUrl}?height=200&width=300`}
+                    src={`/imgs/${item.imageUrl}?height=200&width=300`}
                     alt={item.name}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />

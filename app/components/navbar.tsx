@@ -30,9 +30,13 @@ export default function Navbar({ user }: { user?: { username: string } }) {
     return (
         <nav className="bg-green-600 p-4">
             <div className="container mx-auto flex justify-between items-center">
-                <Link to="/" className="text-white text-2xl font-bold">
-                    Waldgartenbio
-                </Link>
+                <div className="flex flex-row">
+                    <img src="/waldgartenlogo.png" alt="Waldgarten Bio Logo" className="h-10"/>
+                    <Link to="/" className="text-white text-2xl font-bold">
+                        WALDGARTEN
+                    </Link>
+                </div>
+
 
                 {/* Desktop menu */}
                 <div className="hidden md:flex items-center space-x-6">
@@ -42,22 +46,28 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                     <Link to="/blog" className={`text-white hover:text-green-200 ${isActive("/blog")}`}>
                         Blog
                     </Link>
+                    <Link to="/preisliste" className={`text-white hover:text-green-200 ${isActive("/preisliste")}`}>
+                        Preisliste
+                    </Link>
                     {user ? (
-                        <Link to="/profile" className={`text-white hover:text-green-200 flex items-center ${isActive("/profile")}`}>
+                        <Link to="/profile"
+                              className={`text-white hover:text-green-200 flex items-center ${isActive("/profile")}`}>
                             {user.username}
                         </Link>
                     ) : (
-                        <Link to="/login" className={`text-white hover:text-green-200 flex items-center ${isActive("/login")}`}>
-                            <User className="w-5 h-5 mr-1" />
+                        <Link to="/login"
+                              className={`text-white hover:text-green-200 flex items-center ${isActive("/login")}`}>
+                            <User className="w-5 h-5 mr-1"/>
                             <span>Login</span>
                         </Link>
                     )}
 
                     {/* Warenkorb (Shopping Cart) */}
                     <Link to="/cart" className={`relative text-white hover:text-green-200 ${isActive("/cart")}`}>
-                        <ShoppingCart className="w-6 h-6" />
+                        <ShoppingCart className="w-6 h-6"/>
                         {cartCount > 0 && (
-                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
+                            <span
+                                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
                                 {cartCount}
                             </span>
                         )}
@@ -66,7 +76,7 @@ export default function Navbar({ user }: { user?: { username: string } }) {
 
                 {/* Mobile menu button */}
                 <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {isOpen ? <X size={24}/> : <Menu size={24}/>}
                 </button>
             </div>
 

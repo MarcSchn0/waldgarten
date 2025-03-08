@@ -156,7 +156,7 @@ export default function Shop() {
                 <h1 className="text-3xl font-bold mb-8 text-green-800">Unsere Produkte</h1>
                 {items.length === 0 ? (
                     <div className="text-center py-8">
-                        <p className="text-gray-600">No products found matching your criteria.</p>
+                        <p className="text-gray-600">Keine Produkte gefunden oder noch keine vorhanden.</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
