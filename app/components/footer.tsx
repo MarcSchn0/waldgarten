@@ -11,9 +11,9 @@ export default function Footer () {
                     <div className="space-y-4">
                         <h3 className="text-white font-semibold text-lg">Unternehmen</h3>
                         <ul className="space-y-2">
-                            <li><a href="/about-us" className="hover:text-green-200 transition-colors">Über uns</a></li>
-                            <li><a href="/contact" className="hover:text-green-200 transition-colors">Kontakt</a></li>
-                            <li><a href="/blog" className="hover:text-green-200 transition-colors">Blog</a></li>
+                            <li><Link to="/about-us" className="hover:text-green-200 transition-colors">Über uns</Link></li>
+                            <li><Link to="/contact" className="hover:text-green-200 transition-colors">Kontakt</Link></li>
+                            <li><Link to="/blog" className="hover:text-green-200 transition-colors">Blog</Link></li>
                         </ul>
                     </div>
 
@@ -21,9 +21,9 @@ export default function Footer () {
                     <div className="space-y-4">
                         <h3 className="text-white font-semibold text-lg">Rechtliches</h3>
                         <ul className="space-y-2">
-                            <li><a href="/impressum" className="hover:text-green-200 transition-colors">Impressum</a></li>
-                            <li><a href="/nutzungsbedingungen" className="hover:text-green-200 transition-colors">Nutzungsbedingungen</a></li>
-                            <li><a href="/cookies" className="hover:text-green-200 transition-colors">Cookie-Richtlinien</a></li>
+                            <li><Link to="/impressum" className="hover:text-green-200 transition-colors">Impressum</Link></li>
+                            <li><Link to="/nutzungsbedingungen" className="hover:text-green-200 transition-colors">Nutzungsbedingungen</Link></li>
+                            <li><Link to="/cookies" className="hover:text-green-200 transition-colors">Cookie-Richtlinien</Link></li>
                         </ul>
                     </div>
 

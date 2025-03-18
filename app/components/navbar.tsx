@@ -62,7 +62,7 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                         </Link>
                     )}
 
-                    {/* Warenkorb (Shopping Cart) */}
+                    {/* Warenkorb (Shopping Cart)
                     <Link to="/cart" className={`relative text-white hover:text-green-200 ${isActive("/cart")}`}>
                         <ShoppingCart className="w-6 h-6"/>
                         {cartCount > 0 && (
@@ -71,7 +71,7 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                                 {cartCount}
                             </span>
                         )}
-                    </Link>
+                    </Link>*/}
                 </div>
 
                 {/* Mobile menu button */}
@@ -93,6 +93,9 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                         <Link to="/blog" className={`block text-white hover:text-green-200 py-2 ${isActive("/blog")}`}>
                             Blog
                         </Link>
+                        <Link to="/preisliste" className={`block text-white hover:text-green-200 py-2 ${isActive("/preisliste")}`}>
+                            Preisliste
+                        </Link>
                         {user ? (
                             <span className={`block text-white py-2 ${isActive("/profile")}`}>{user.username}</span>
                         ) : (
@@ -102,8 +105,8 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                             </Link>
                         )}
 
-                        {/* Mobile Warenkorb (Shopping Cart) */}
-                        <Link to="/cart" className={`flex items-center text-white hover:text-green-200 py-2 ${isActive("/cart")}`}>
+                        {/* Mobile Warenkorb (Shopping Cart)
+                        {<Link to="/cart" className={`flex items-center text-white hover:text-green-200 py-2 ${isActive("/cart")}`}>
                             <ShoppingCart className="w-5 h-5 mr-1" />
                             <span>Warenkorb</span>
                             {cartCount > 0 && (
@@ -111,7 +114,7 @@ export default function Navbar({ user }: { user?: { username: string } }) {
                                     {cartCount}
                                 </span>
                             )}
-                        </Link>
+                        </Link>*/}
                     </div>
                 </div>
             )}
