@@ -28,7 +28,7 @@ export default function Navbar({ user }: { user?: { username: string } }) {
     const isActive = (path: string) => location.pathname === path ? "font-bold" : "";
 
     return (
-        <nav className="bg-green-600 p-4">
+        <nav className="bg-green-700 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex flex-row">
                     <img src="/waldgartenlogo.png" alt="Waldgarten Bio Logo" className="h-10"/>

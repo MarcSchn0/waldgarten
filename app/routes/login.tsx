@@ -57,7 +57,7 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center min-h-screen bg-gray-50 pt-16">
             <div className="w-full max-w-sm p-6 bg-white shadow-md rounded-md">
-                <h1 className="text-2xl font-semibold text-center mb-4">Anmeldung bei Waldgartenbio</h1>
+                <h1 className="text-2xl font-semibold text-center mb-4">Anmeldung bei Waldgarten</h1>
 
                 <form method="post" className="space-y-4">
                     <div>
@@ -107,7 +107,7 @@ export default function Login() {
                 </form>
 
                 <p className="mt-4 text-sm text-center text-gray-500">
-                    Neu bei Waldgartenbio? <a href="/register" className="text-blue-600 hover:underline">Konto erstellen</a>
+                    Neu bei Waldgarten? <a href="/register" className="text-blue-600 hover:underline">Konto erstellen</a>
                 </p>
             </div>
         </div>

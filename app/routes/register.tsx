@@ -55,7 +55,7 @@ export default function Register() {
     return (
         <div className="flex flex-col items-center min-h-screen bg-gray-50 pt-16">
             <div className="w-full max-w-sm p-6 bg-white shadow-md rounded-md">
-                <h1 className="text-2xl font-semibold text-center mb-4">Registrierung bei Waldgartenbio</h1>
+                <h1 className="text-2xl font-semibold text-center mb-4">Registrierung bei Waldgarten</h1>
 
                 <form method="post" className="space-y-4">
                     <div>
