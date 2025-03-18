@@ -1,5 +1,13 @@
 import React from 'react';
 import {Leaf, Truck, PackageCheck, Users, Star} from 'lucide-react';
+import {MetaFunction} from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Über uns" },
+        { name: "About us Page", content: "Infos über Waldgarten" },
+    ];
+};
 
 export default function About() {
     return (

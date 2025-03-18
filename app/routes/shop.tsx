@@ -1,4 +1,4 @@
-import { json, LoaderFunction } from "@remix-run/node";
+import {json, LoaderFunction, MetaFunction} from "@remix-run/node";
 import {Form, Link, useLoaderData, useSearchParams} from "@remix-run/react";
 import ItemCard2 from "~/components/item-card-2";
 import { Search, SlidersHorizontal, ShoppingCart, Trash } from "lucide-react";
@@ -14,6 +14,13 @@ interface Item {
     price: number;
     imageUrl: string;
 }
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Shop" },
+        { name: "Shop Page", content: "Alle Infos zu allen Produkten" },
+    ];
+};
 
 export const loader: LoaderFunction = async ({ request }) => {
     const url = new URL(request.url);

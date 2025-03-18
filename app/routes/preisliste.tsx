@@ -1,4 +1,12 @@
 import {FileDown, FileText} from "lucide-react";
+import {MetaFunction} from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Preisliste" },
+        { name: "Preisliste Page", content: "Alle Infos zu den Preisen und den Produkten" },
+    ];
+};
 
 export default function Preisliste() {
     return (

@@ -8,8 +8,8 @@ import ItemCard2 from "~/components/item-card-2";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Hauptseite" },
+    { name: "Welcome Page", content: "Willkomen bei Waldgarten!" },
   ];
 };
 

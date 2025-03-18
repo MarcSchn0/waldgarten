@@ -1,4 +1,4 @@
-import {ActionFunctionArgs} from "@remix-run/node";
+import {ActionFunctionArgs, MetaFunction} from "@remix-run/node";
 import {useActionData} from "@remix-run/react";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
@@ -7,6 +7,12 @@ import {validatePassword} from "~/utils/validation.server";
 import {Info} from "lucide-react";
 import {register} from "~/utils/auth.server";
 
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Registrierung" },
+        { name: "Register Page", content: "Registrierungsformular" },
+    ];
+};
 
 export async function action({request}: ActionFunctionArgs) {
     const formData = await request.formData();

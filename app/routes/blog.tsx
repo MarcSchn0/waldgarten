@@ -1,6 +1,14 @@
 import React from 'react';
 import { BookOpen, Newspaper, RefreshCw } from 'lucide-react';
 import {Button} from "~/components/ui/button";
+import {MetaFunction} from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Blog" },
+        { name: "Blog Page", content: "Blog Page" },
+    ];
+};
 
 export default function Blog() {
     return (

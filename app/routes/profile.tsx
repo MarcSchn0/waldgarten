@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { User, Mail, Lock, Eye, EyeOff, Save, Bell, BellOff } from 'lucide-react';
 import {getUser} from "~/utils/auth.server";
-import {json} from "@remix-run/node";
+import {json, MetaFunction} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Profil" },
+        { name: "Profil Page", content: "Alle Infos zu deinem Profil" },
+    ];
+};
+
+
 
 export async function loader({ request }: { request: Request }) {
     const user = await getUser(request); // Fetch the user on the server

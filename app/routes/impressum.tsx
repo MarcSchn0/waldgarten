@@ -1,5 +1,12 @@
 import {Building2, Mail, MapPin, Phone, Scale} from "lucide-react";
+import {MetaFunction} from "@remix-run/node";
 
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Impressum" },
+        { name: "Impressum Page", content: "Impressum Infos" },
+    ];
+};
 
 export default function Impressum() {
     return (

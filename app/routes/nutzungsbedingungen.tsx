@@ -1,4 +1,12 @@
 import {AlertCircle, FileText, Scale, ScrollText, ShieldCheck} from "lucide-react";
+import {MetaFunction} from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Nutzungsbedingungen" },
+        { name: "Nutzungsbedingungen Page", content: "Alle Infos zu den Nutzungsbedingungen" },
+    ];
+};
 
 
 export default function Nutzungsbedingungen() {

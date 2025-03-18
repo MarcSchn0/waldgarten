@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useLoaderData } from '@remix-run/react';
-import {json, LoaderFunction, redirect} from '@remix-run/node';
+import {json, LoaderFunction, MetaFunction, redirect} from '@remix-run/node';
 import {Star, Truck, PackageCheck, ShieldCheck, Heart, ShoppingCart} from 'lucide-react';
 import { Product } from '~/types/interfaces';
 import {prisma} from "~/db.server";
 import {Toast} from "~/components/Toast";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Produktübersicht" },
+        { name: "Produktübersicht Page", content: "Alle Infos zu den Produkt" },
+    ];
+};
 
 export const loader: LoaderFunction = async ({ params }) => {
     const item = await prisma.item.findUnique({ where: { id: parseInt(params.id as string) } });

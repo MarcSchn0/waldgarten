@@ -1,4 +1,12 @@
 import {Clock, Cookie, Info, Settings, Shield, Lock} from "lucide-react";
+import {MetaFunction} from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Cookies" },
+        { name: "Cookies Page", content: "Cookie Richtlinien" },
+    ];
+};
 
 
 export default function Cookies() {

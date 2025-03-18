@@ -1,9 +1,17 @@
 import { useActionData } from "@remix-run/react";
-import {ActionFunctionArgs, json, LoaderFunction, LoaderFunctionArgs, redirect} from "@remix-run/node";
+import {ActionFunctionArgs, json, LoaderFunction, LoaderFunctionArgs, MetaFunction, redirect} from "@remix-run/node";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
 import {Button} from "~/components/ui/button";
 import {getUser, login} from "~/utils/auth.server";
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Login" },
+        { name: "Login Page", content: "Logninformular" },
+    ];
+};
+
 
 export const loader: LoaderFunction = async ({ request }: LoaderFunctionArgs) => {
     return (await getUser(request)) ? redirect('/') : null

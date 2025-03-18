@@ -1,4 +1,4 @@
-import { json, type ActionFunction } from "@remix-run/node";
+import {json, type ActionFunction, MetaFunction} from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import {Button} from "~/components/ui/button";
@@ -14,6 +14,13 @@ interface ActionData {
     };
     success?: boolean;
 }
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Kontakt" },
+        { name: "Contact Page", content: "Contact Infos" },
+    ];
+};
 
 export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
