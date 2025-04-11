@@ -50,11 +50,11 @@ export default function Blog() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <SecondaryButton className="flex flex-row">
-                                <BookOpen className="h-5 w-5 mr-1 mt-1 " />
+                            <SecondaryButton className="flex flex-row text-sm px-3 py-2">
+                                <BookOpen className="h-4 w-4 mr-1 mt-1"/>
                                 Newsletter abonnieren
                             </SecondaryButton>
-                            <PrimaryButton>
+                            <PrimaryButton className="text-sm px-3 py-2">
                                 Thema vorschlagen
                             </PrimaryButton>
                         </div>
