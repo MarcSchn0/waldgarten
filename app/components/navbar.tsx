@@ -31,10 +31,10 @@ export default function Navbar({ user }: { user?: { username: string } }) {
         <nav className="bg-green-700 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex flex-row">
-                    <img src="/waldgartenlogo.png" alt="Waldgarten Bio Logo" className="h-10"/>
-                    <Link to="/" className="text-white text-2xl font-bold">
+                    {<img src="/waldgarten-ohne.png" alt="Waldgarten Bio Logo" className="h-12"/>}
+                    {<Link to="/" className="text-white text-2xl font-bold mt-2">
                         WALDGARTEN
-                    </Link>
+                    </Link>}
                 </div>
 
 
