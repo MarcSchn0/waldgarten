@@ -11,6 +11,17 @@ body {
   }
 }
 
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+  transform: translateY(20px);
+}
+
 
 @layer base {
   :root {

@@ -12,10 +12,10 @@ export default function Preisliste() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header Section */}
-            <section className="bg-green-50 py-20">
+            <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
                 <div className="container mx-auto px-4">
-                    <h1 className="text-4xl font-bold text-center mb-6">Preisliste</h1>
-                    <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto">
+                    <h1 className="text-4xl font-bold text-white text-center mb-6">Preisliste</h1>
+                    <p className="text-xl text-center text-white max-w-3xl mx-auto">
                         Hier finden Sie eine vollständige Übersicht unserer Produkte und Preise
                     </p>
                 </div>
@@ -26,7 +26,7 @@ export default function Preisliste() {
                 <div className="container mx-auto px-4 max-w-3xl">
                     <div className="bg-white rounded-lg shadow-lg p-8 text-center">
                         <div className="mb-8">
-                            <FileText className="w-16 h-16 text-green-600 mx-auto mb-4"/>
+                            <FileText className="w-16 h-16 text-green-800 mx-auto mb-4"/>
                             <h2 className="text-2xl font-semibold mb-4">Aktuelle Preisliste</h2>
                             <p className="text-gray-600 mb-6">
                                 Laden Sie unsere vollständige Preisliste als PDF herunter.
@@ -40,7 +40,7 @@ export default function Preisliste() {
                         <a
                             href="/preisliste.pdf"
                             download
-                            className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+                            className="inline-flex items-center px-6 py-3 bg-green-800 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 shadow-md hover:shadow-lg"
                         >
                             <FileDown className="w-5 h-5 mr-2"/>
                             Preisliste herunterladen

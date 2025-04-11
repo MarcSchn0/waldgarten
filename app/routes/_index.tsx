@@ -5,6 +5,9 @@ import {Product} from "~/types/interfaces";
 import ItemCard from "~/components/item-card";
 import ItemCard2 from "~/components/item-card-2";
 import {Leaf, PackageCheck, Truck} from "lucide-react";
+import {useEffect} from "react";
+import SecondaryButton from "~/components/ui/secondary-button";
+import PrimaryButton from "~/components/ui/primary-button";
 
 
 export const meta: MetaFunction = () => {
@@ -30,33 +33,31 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function Index() {
   const { featuredProducts, hostUrl } = useLoaderData<typeof loader>();
-
   return (
-      <div className="min-h-screen flex flex-col bg-white">
+      <div className="min-h-screen bg-white">
         <main className="flex-grow">
           {/* Hero Section */}
           <section className="bg-gradient-to-br from-green-800 to-green-900 py-24">
             <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-bold mb-6 text-white">Frische BIO-Jungpflanzen jetzt bestellen!</h2>
+              <h2 className="text-5xl lg:text-6xl font-bold mb-6 text-white">Frische BIO-Jungpflanzen jetzt
+                bestellen!</h2>
               <p className="text-xl mb-10 text-green-100">Entdecken Sie unsere sorgfältig gezüchteten Jungpflanzen für
                 Ihren Garten</p>
-              <Link to="/shop"
-                  className="bg-white text-green-800 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-50 transition duration-300 shadow-lg">
-                Jetzt einkaufen
-              </Link>
-            </div>
-          </section>
+              <div className="flex flex-col md:flex-row justify-center gap-4 px-10">
+                <Link to="/shop">
+                  <SecondaryButton className="w-full">
+                    Jetzt einkaufen
+                  </SecondaryButton>
 
-          {/* Price List Section */}
-          <section className="py-20 bg-green-50">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-4xl font-bold mb-6 text-green-900">Jungpflanzenliste</h2>
-              <p className="text-lg mb-10 text-green-700">Durchstöbern Sie unser vielfältiges Angebot an
-                Jungpflanzen</p>
-              <Link to="/preisliste"
-                  className="bg-green-800 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition duration-300 shadow-lg">
-                Preisliste ansehen
-              </Link>
+                </Link>
+                <Link to="/preisliste">
+                  <PrimaryButton className="w-full">
+                    Preisliste ansehen
+                  </PrimaryButton>
+
+                </Link>
+              </div>
+
             </div>
           </section>
 
@@ -98,7 +99,6 @@ export default function Index() {
             </div>
           </section>
 
-          {/* Image Banner Section */}
           <section className="relative h-96 bg-cover bg-center bg-no-repeat"
                    style={{backgroundImage: 'url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80")'}}>
             <div className="absolute inset-0 bg-green-900/60"></div>
@@ -109,6 +109,7 @@ export default function Index() {
               </div>
             </div>
           </section>
+
         </main>
       </div>
   );

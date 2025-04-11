@@ -2,6 +2,8 @@ import React from 'react';
 import { BookOpen, Newspaper, RefreshCw } from 'lucide-react';
 import {Button} from "~/components/ui/button";
 import {MetaFunction} from "@remix-run/node";
+import PrimaryButton from "~/components/ui/primary-button";
+import SecondaryButton from "~/components/ui/secondary-button";
 
 export const meta: MetaFunction = () => {
     return [
@@ -14,11 +16,11 @@ export default function Blog() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
-            <div className="bg-green-50 shadow-sm">
+            <div className="bg-green-800 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div className="text-center">
-                        <h1 className="text-4xl font-bold text-gray-900 mb-4">Unser Blog</h1>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        <h1 className="text-4xl font-bold text-white mb-4">Unser Blog</h1>
+                        <p className="text-lg text-white max-w-2xl mx-auto">
                             Bleiben Sie auf dem Laufenden mit aufschlussreichen Artikeln, Branchenneuigkeiten und Expertenperspektiven.
                         </p>
                     </div>
@@ -48,13 +50,13 @@ export default function Blog() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                            <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                <BookOpen className="h-5 w-5 mr-2 text-gray-500" />
+                            <SecondaryButton className="flex flex-row">
+                                <BookOpen className="h-5 w-5 mr-1 mt-1 " />
                                 Newsletter abonnieren
-                            </button>
-                            <Button>
+                            </SecondaryButton>
+                            <PrimaryButton>
                                 Thema vorschlagen
-                            </Button>
+                            </PrimaryButton>
                         </div>
                     </div>
                 </div>
