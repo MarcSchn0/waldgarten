@@ -12,6 +12,8 @@ import Footer from "~/components/footer";
 import {getUser} from "~/utils/auth.server";
 import Navbar from "~/components/navbar";
 
+import type { LinksFunction } from "@remix-run/node";
+
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -23,7 +25,12 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
+  {
+    rel: "stylesheet",
+    href: "https://use.typekit.net/hfh3xxx.css", // 👈 Adobe Fonts Link hier rein
+  },
 ];
+
 
 export async function loader({ request }: { request: Request }) {
   const user = await getUser(request); // Fetch the user on the server

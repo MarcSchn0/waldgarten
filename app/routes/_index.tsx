@@ -1,9 +1,6 @@
 import {json, LoaderFunction, MetaFunction, redirect} from "@remix-run/node";
 import {Link, useLoaderData} from "@remix-run/react";
 import {prisma} from "~/db.server";
-import {Product} from "~/types/interfaces";
-import ItemCard from "~/components/item-card";
-import ItemCard2 from "~/components/item-card-2";
 import {Leaf, PackageCheck, Truck} from "lucide-react";
 import {useEffect} from "react";
 import SecondaryButton from "~/components/ui/secondary-button";
