@@ -12,8 +12,6 @@ import Footer from "~/components/footer";
 import {getUser} from "~/utils/auth.server";
 import Navbar from "~/components/navbar";
 
-import type { LinksFunction } from "@remix-run/node";
-
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
