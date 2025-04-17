@@ -45,7 +45,7 @@ export const action: ActionFunction = async ({ request }) => {
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "waldgarten.smtp@gmail.com",
+                user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASSWORD,
             },
         });
