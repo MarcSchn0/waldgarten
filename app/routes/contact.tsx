@@ -91,7 +91,7 @@ export default function Contact() {
                             <h2 className="text-2xl font-semibold text-gray-900 mb-6">Infos</h2>
 
                             <div className="flex items-start space-x-4">
-                                <Phone className="w-6 h-6 text-green-600 mt-1" />
+                                <Phone className="w-6 h-6 text-green-800 mt-1" />
                                 <div>
                                     <h3 className="font-medium text-gray-900">Telefonnummer</h3>
                                     <p className="text-gray-600">+43 664 488936837</p>
@@ -99,7 +99,7 @@ export default function Contact() {
                             </div>
 
                             <div className="flex items-start space-x-4">
-                                <Mail className="w-6 h-6 text-green-600 mt-1" />
+                                <Mail className="w-6 h-6 text-green-800 mt-1" />
                                 <div>
                                     <h3 className="font-medium text-gray-900">Email</h3>
                                     <p className="text-gray-600">waldgarten.2833@gmail.com</p>
@@ -107,7 +107,7 @@ export default function Contact() {
                             </div>
 
                             <div className="flex items-start space-x-4">
-                                <MapPin className="w-6 h-6 text-green-600 mt-1" />
+                                <MapPin className="w-6 h-6 text-green-800 mt-1" />
                                 <div>
                                     <h3 className="font-medium text-gray-900">Location</h3>
                                     <p className="text-gray-600">Bromberg<br />Bucklige Welt</p>
