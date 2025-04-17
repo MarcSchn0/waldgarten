@@ -1,10 +1,11 @@
 import {json, type ActionFunction, MetaFunction} from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import {Button} from "~/components/ui/button";
 import {Textarea} from "~/components/ui/textarea";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
+import PrimaryButton from "~/components/ui/primary-button";
+import nodemailer from "nodemailer";
 
 interface ActionData {
     errors?: {
@@ -22,6 +23,8 @@ export const meta: MetaFunction = () => {
     ];
 };
 
+
+
 export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
     const name = formData.get("name");
@@ -38,10 +41,37 @@ export const action: ActionFunction = async ({ request }) => {
         return json<ActionData>({ errors });
     }
 
-    // Here you would typically send the email or save to a database
-    // For now, we'll just return success
-    return json<ActionData>({ success: true });
+    try {
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: "waldgarten.smtp@gmail.com",
+                pass: process.env.SMTP_PASSWORD,
+            },
+        });
+
+        await transporter.sendMail({
+            from: `"Kontaktformular" <waldgarten.smtp@gmail.com>`,
+            to: "waldgarten.2833@gmail.com",
+            subject: "Neue Nachricht vom Kontaktformular",
+            html: `
+                <h2>Neue Nachricht</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Nachricht:</strong><br/>${message}</p>
+            `,
+        });
+
+        return json<ActionData>({ success: true });
+
+    } catch (error) {
+        console.error("Email send error:", error);
+        return json<ActionData>({
+            errors: { message: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut." },
+        });
+    }
 };
+
 
 export default function Contact() {
     const actionData = useActionData<ActionData>();
@@ -64,7 +94,7 @@ export default function Contact() {
                                 <Phone className="w-6 h-6 text-green-600 mt-1" />
                                 <div>
                                     <h3 className="font-medium text-gray-900">Telefonnummer</h3>
-                                    <p className="text-gray-600">+43 123 4567890</p>
+                                    <p className="text-gray-600">+43 664 488936837</p>
                                 </div>
                             </div>
 
@@ -83,18 +113,6 @@ export default function Contact() {
                                     <p className="text-gray-600">Bromberg<br />Bucklige Welt</p>
                                 </div>
                             </div>
-
-                            <div className="flex items-start space-x-4">
-                                <Clock className="w-6 h-6 text-green-600 mt-1" />
-                                <div>
-                                    <h3 className="font-medium text-gray-900">Öffnungszeiten</h3>
-                                    <p className="text-gray-600">
-                                        Montag - Freitag: 9 - 17 Uhr<br />
-                                        Samstag: 10 - 16 Uhr<br />
-                                        Sonntag: Geschlossen
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -103,8 +121,7 @@ export default function Contact() {
                         <Form method="post" className="space-y-6">
                             {actionData?.success && (
                                 <div className="bg-green-50 border border-green-200 rounded-md p-4 mb-6">
-                                    <p className="text-green-700">Thank you for your message! We'll get back to you
-                                        soon.</p>
+                                    <p className="text-green-700">Danke für Ihre Nachricht wir melden uns bei Ihnen so schnell wie möglich!</p>
                                 </div>
                             )}
 
@@ -153,12 +170,11 @@ export default function Contact() {
                                 )}
                             </div>
 
-                            <Button
-                                type="submit"
-                                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            <PrimaryButton
+                                type="submit" className="text-sm "
                             >
                                 Send Message
-                            </Button>
+                            </PrimaryButton>
                         </Form>
                     </div>
 
