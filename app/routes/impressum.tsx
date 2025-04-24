@@ -46,7 +46,7 @@ export default function Impressum() {
                                 <Phone className="w-6 h-6 text-green-600 flex-shrink-0" />
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2">Telefon</h3>
-                                    <p className="text-gray-600">+43 123 456789</p>
+                                    <p className="text-gray-600">+43 664 88936837</p>
                                 </div>
                             </div>
 

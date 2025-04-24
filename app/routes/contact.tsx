@@ -94,7 +94,7 @@ export default function Contact() {
                                 <Phone className="w-6 h-6 text-green-800 mt-1" />
                                 <div>
                                     <h3 className="font-medium text-gray-900">Telefonnummer</h3>
-                                    <p className="text-gray-600">+43 664 488936837</p>
+                                    <p className="text-gray-600">+43 664 88936837</p>
                                 </div>
                             </div>
 
