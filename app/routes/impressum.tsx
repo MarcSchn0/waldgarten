@@ -78,10 +78,6 @@ export default function Impressum() {
                                         <p>Einzelunternehmen</p>
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-semibold mb-2">UID-Nummer</h3>
-                                        <p>ATU12345678</p>
-                                    </div>
-                                    <div>
                                         <h3 className="text-xl font-semibold mb-2">Aufsichtsbehörde</h3>
                                         <p>Bezirkshauptmannschaft Wiener Neustadt</p>
                                     </div>
