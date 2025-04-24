@@ -33,7 +33,7 @@ export default function Impressum() {
                                 <div className="space-y-2 text-gray-600">
                                     <p>Waldgarten</p>
                                     <p>Alexander Hruska</p>
-                                    <p>Bromberger Straße 123</p>
+                                    <p>Stögersbach 15</p>
                                     <p>2833 Bromberg</p>
                                     <p>Österreich</p>
                                 </div>
