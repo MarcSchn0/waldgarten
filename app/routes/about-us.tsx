@@ -13,9 +13,9 @@ export default function About() {
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="bg-green-50 py-20">
-                <div className="container mx-auto px-4"><h1 className="text-4xl font-bold text-center mb-6">Über
-                    Uns</h1> <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto"> Willkommen im
+            <section className="bg-green-800 py-20">
+                <div className="container mx-auto px-4"><h1 className="text-4xl text-white font-bold text-center mb-6">Über
+                    Uns</h1> <p className="text-xl text-center text-white max-w-3xl mx-auto"> Willkommen im
                     Waldgarten Shop in Bromberg! Wir sind ein junges Unternehmen, das mit Herz und Leidenschaft
                     frisches, heimisches Gemüse und weitere natürliche Produkte anbaut und verkauft. Unser Fokus liegt
                     auf nachhaltiger Landwirtschaft und regionaler Qualität, direkt aus der Natur. </p></div>
@@ -28,7 +28,7 @@ export default function About() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center p-6">
                             <div className="flex justify-center mb-4">
-                                <Leaf className="w-12 h-12 text-green-600"/>
+                                <Leaf className="w-12 h-12 text-green-800"/>
                             </div>
                             <h3 className="text-xl font-semibold mb-3">Nachhaltigkeit</h3>
                             <p className="text-gray-600">
@@ -37,7 +37,7 @@ export default function About() {
                         </div>
                         <div className="text-center p-6">
                             <div className="flex justify-center mb-4">
-                                <Users className="w-12 h-12 text-green-600" />
+                                <Users className="w-12 h-12 text-green-800" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3">Gemeinschaft</h3>
                             <p className="text-gray-600">
@@ -46,7 +46,7 @@ export default function About() {
                         </div>
                         <div className="text-center p-6">
                             <div className="flex justify-center mb-4">
-                                <PackageCheck className="w-12 h-12 text-green-600" />
+                                <PackageCheck className="w-12 h-12 text-green-800" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3">Qualität</h3>
                             <p className="text-gray-600">
@@ -58,15 +58,15 @@ export default function About() {
             </section>
 
             {/* Service Features */}
-            <section className="bg-green-50 py-16">
+            <section className="bg-green-800 text-white py-16">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-bold text-center mb-12">Unser Service</h2>
+                    <h2 className="text-3xl font-bold text-white text-center mb-12">Unser Service</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <div className="flex items-start space-x-4">
                             <Truck className="w-8 h-8 text-green-600 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold mb-2">Schnelle Abholung</h3>
-                                <p className="text-gray-600">
+                                <p>
                                     Sie können ihre Produkte einfach bei uns bestellen und direkt abholen.
                                 </p>
                             </div>
@@ -75,7 +75,7 @@ export default function About() {
                             <PackageCheck className="w-8 h-8 text-green-600 flex-shrink-0" />
                             <div>
                                 <h3 className="text-xl font-semibold mb-2">Qualitätskontrolle</h3>
-                                <p className="text-gray-600">
+                                <p>
                                     Jedes Produkt wird sorgfältig auf Qualität geprüft.
                                 </p>
                             </div>
