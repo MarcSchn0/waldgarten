@@ -13,10 +13,10 @@ export default function Nutzungsbedingungen() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header Section */}
-            <section className="bg-green-50 py-20">
+            <section className="bg-green-800 text-white py-20">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl font-bold text-center mb-6">Nutzungsbedingungen</h1>
-                    <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-center max-w-3xl mx-auto">
                         Bitte lesen Sie diese Nutzungsbedingungen sorgfältig durch, bevor Sie unsere Dienste in Anspruch nehmen.
                     </p>
                 </div>
@@ -28,7 +28,7 @@ export default function Nutzungsbedingungen() {
                     <div className="space-y-12">
                         {/* General Terms */}
                         <div className="flex items-start space-x-4">
-                            <ScrollText className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <ScrollText className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Allgemeine Bestimmungen</h2>
                                 <div className="prose prose-green max-w-none text-gray-600">
@@ -45,7 +45,7 @@ export default function Nutzungsbedingungen() {
 
                         {/* Account & Orders */}
                         <div className="flex items-start space-x-4">
-                            <ShieldCheck className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <ShieldCheck className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Bestellungen und Kundenkonten</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -65,7 +65,7 @@ export default function Nutzungsbedingungen() {
 
                         {/* Rights & Obligations */}
                         <div className="flex items-start space-x-4">
-                            <Scale className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Scale className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Rechte und Pflichten</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -88,7 +88,7 @@ export default function Nutzungsbedingungen() {
 
                         {/* Liability */}
                         <div className="flex items-start space-x-4">
-                            <AlertCircle className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <AlertCircle className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Haftung</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -106,7 +106,7 @@ export default function Nutzungsbedingungen() {
 
                         {/* Final Provisions */}
                         <div className="flex items-start space-x-4">
-                            <FileText className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <FileText className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Schlussbestimmungen</h2>
                                 <div className="space-y-4 text-gray-600">

@@ -13,10 +13,10 @@ export default function Cookies() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header Section */}
-            <section className="bg-green-50 py-20">
+            <section className="bg-green-800 text-white py-20">
                 <div className="container mx-auto px-4">
                     <h1 className="text-4xl font-bold text-center mb-6">Cookie-Richtlinie</h1>
-                    <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-center max-w-3xl mx-auto">
                         Informationen über die Verwendung von Cookies auf unserer Website
                     </p>
                 </div>
@@ -28,7 +28,7 @@ export default function Cookies() {
                     <div className="space-y-12">
                         {/* What are Cookies */}
                         <div className="flex items-start space-x-4">
-                            <Cookie className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Cookie className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Was sind Cookies?</h2>
                                 <div className="text-gray-600">
@@ -42,7 +42,7 @@ export default function Cookies() {
 
                         {/* Cookie Types */}
                         <div className="flex items-start space-x-4">
-                            <Settings className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Settings className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Arten von Cookies</h2>
                                 <div className="space-y-6 text-gray-600">
@@ -64,7 +64,7 @@ export default function Cookies() {
 
                         {/* Cookie Usage */}
                         <div className="flex items-start space-x-4">
-                            <Info className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Info className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Verwendungszweck</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -80,7 +80,7 @@ export default function Cookies() {
 
                         {/* Cookie Duration */}
                         <div className="flex items-start space-x-4">
-                            <Clock className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Clock className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Speicherdauer</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -97,7 +97,7 @@ export default function Cookies() {
 
                         {/* Privacy & Control */}
                         <div className="flex items-start space-x-4">
-                            <Shield className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Shield className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Datenschutz & Kontrolle</h2>
                                 <div className="space-y-4 text-gray-600">
@@ -118,7 +118,7 @@ export default function Cookies() {
 
                         {/* Updates */}
                         <div className="flex items-start space-x-4">
-                            <Lock className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                            <Lock className="w-8 h-8 text-green-800 flex-shrink-0 mt-1" />
                             <div>
                                 <h2 className="text-2xl font-semibold mb-4">Aktualisierungen</h2>
                                 <div className="space-y-4 text-gray-600">

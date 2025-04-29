@@ -6,6 +6,8 @@ import React, { useState, useEffect } from "react";
 import { prisma } from "~/db.server";
 import * as process from "node:process";
 import {Toast} from "~/components/Toast";
+import PrimaryButton from "~/components/ui/primary-button";
+import SecondaryButton from "~/components/ui/secondary-button";
 
 interface Item {
     id: number;
@@ -117,7 +119,7 @@ export default function Shop() {
                                     id="search"
                                     name="search"
                                     defaultValue={currentSearch}
-                                    placeholder="Search..."
+                                    placeholder="Suche..."
                                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
                                 />
                                 <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400"/>
@@ -148,12 +150,12 @@ export default function Shop() {
                             </div>
                         </div>
 
-                        <button
+                        <PrimaryButton
                             type="submit"
                             className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200"
                         >
-                            Apply Filters
-                        </button>
+                            Filter anwenden
+                        </PrimaryButton>
                     </Form>
                 </div>
             </aside>
@@ -162,8 +164,43 @@ export default function Shop() {
             <div className="flex-[2]">
                 <h1 className="text-3xl font-bold mb-8 text-green-800">Unsere Produkte</h1>
                 {items.length === 0 ? (
-                    <div className="text-center py-8">
-                        <p className="text-gray-600">Keine Produkte gefunden oder noch keine vorhanden.</p>
+                    <div
+                        className="min-h-[60vh] flex flex-col items-center justify-center bg-white text-center px-4 py-12">
+                        <div className="max-w-md">
+                            <div className="flex justify-center mb-6">
+                                <svg
+                                    className="w-16 h-16 text-gray-300"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M3 3h18M9 3v18m6-18v18M3 9h18M3 15h18"
+                                    />
+                                </svg>
+                            </div>
+                            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Keine Produkte gefunden</h2>
+                            <p className="text-gray-600 mb-6">
+                                Es sind momentan leider keine Produkte verfügbar. Bitte schau später noch
+                                einmal vorbei oder entdecke unsere anderen Angebote.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                <Link to="/preisliste">
+                                    <PrimaryButton className="px-5 py-2 text-sm font-light">
+                                        Zur Preisliste der Produkte
+                                    </PrimaryButton>
+                                </Link>
+
+                                <Link to="/contact">
+                                    <SecondaryButton  className="px-5 py-2 text-sm font-light">
+                                        Kontaktiere uns
+                                    </SecondaryButton>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
