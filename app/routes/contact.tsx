@@ -5,7 +5,8 @@ import {Textarea} from "~/components/ui/textarea";
 import {Label} from "~/components/ui/label";
 import {Input} from "~/components/ui/input";
 import PrimaryButton from "~/components/ui/primary-button";
-import nodemailer from "nodemailer";
+import * as nodemailer from 'nodemailer';
+
 
 interface ActionData {
     errors?: {
@@ -43,12 +44,23 @@ export const action: ActionFunction = async ({ request }) => {
 
     try {
         const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false,
             auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD,
+                user: process.env.SMTP_USER!,
+                pass: process.env.SMTP_PASSWORD!,
             },
+            tls: {
+                rejectUnauthorized: false,
+            },
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
+            socketTimeout: 10000,
+            family: 4,
         });
+
+
 
         await transporter.sendMail({
             from: `"Kontaktformular" <waldgarten.smtp@gmail.com>`,
